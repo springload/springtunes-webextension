@@ -1,0 +1,24 @@
+{
+
+  "description": "Show current song played on Spotify via Springtunes and allows some basic controls.",
+  "manifest_version": 2,
+  "name": "springtunes-webextension",
+  "version": "1.0",
+  "homepage_url": "https://github.com/springload/springtunes-webextension",
+
+  "permissions": [
+    "<all_urls>"
+  ],
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "browser_action": {
+    "browser_style": true,
+    "default_icon": "icons/springtunes-32.png",
+    "default_title": "Springtunes",
+    "default_popup": "popup/springtunes.html"
+  }
+
+}
