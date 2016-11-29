@@ -11,21 +11,26 @@ function callApi(callback, method, paramBody) {
       }
   };
   xmlhttp.open(method, url, true);
+  xmlhttp.setRequestHeader("Content-Type", "application/json");
   xmlhttp.send(JSON.stringify(paramBody));
 }
 
-function initializeCurrentSong(callback) {
-  callApi(callback, 'GET');
+function getCurrentSong(callbackStart, callbackEnd) {
+  callbackStart();
+  callApi(callbackEnd, 'GET');
 }
 
-function playSong(callback) {
-  callApi(callback, 'PUT');
+function playSong(callbackStart, callbackEnd) {
+  callbackStart();
+  callApi(callbackEnd, 'PUT');
 }
 
-function backSong(callback) {
-  callApi(callback, 'POST', { action: 'back' });
+function backSong(callbackStart, callbackEnd) {
+  callbackStart();
+  callApi(callbackEnd, 'POST', { action: 'back' });
 }
 
-function nextSong(callback) {
-  callApi(callback, 'POST', { action: 'next' });
+function nextSong(callbackStart, callbackEnd) {
+  callbackStart();
+  callApi(callbackEnd, 'POST', { action: 'next' });
 }

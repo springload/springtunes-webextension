@@ -1,0 +1,137 @@
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+body {
+    color: #333;
+    width: 300px;
+    overflow: hidden;
+}
+
+.panel-section {
+    border-bottom: 1px solid #ccc;
+    padding: 15px;
+}
+
+.logo {
+    width: 250px;
+    height: 41px;
+}
+
+.processing {
+    margin-top: 15px;
+}
+
+/* TRACK INFO */
+
+.section-info {
+    display: inline-block;
+    vertical-align: top;
+    width: 196px;
+}
+
+.song-title,
+.song-artist,
+.song-album {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 5px;
+}
+
+.song-artist {
+    font-weight: normal;
+}
+
+.song-album {
+    color: #8f8f8f;
+    font-weight: lighter;
+}
+
+.section-graphic {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    border-radius: 33px;
+    background: #7DC265;
+    margin-right: 10px;
+}
+
+.headphones {
+    width: 50px;
+    height: 60px;
+    margin: auto;
+}
+
+/* CONTROLS */
+
+.panel-section-footer {
+    padding: 0;
+    height: 40px;
+}
+
+.panel-section-footer,
+.section-footer-button {
+    border: 0;
+    margin: 0;
+}
+
+.section-footer-button {
+    width: 20%;
+    display: inline-block;
+}
+
+.section-footer-button:first-child {
+    border-bottom-left-radius: 3px;
+}
+
+.section-footer-button:last-child {
+    border-bottom-right-radius: 3px;
+}
+
+
+.green-button,
+.orange-button {
+    position:relative;
+    height: 40px;
+    width: 20%;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #7DC265;
+    font-weight: 800;
+    transition: background-color .2s ease;
+}
+
+.green-button:hover {
+    background-color: #005256;
+}
+
+.green-button img,
+.orange-button img {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left: 0;
+    right: 0;
+    margin:auto;
+}
+
+.orange-button {
+    background-color: #F5AC35;
+}
+
+.orange-button:hover {
+    background-color: #bb7709;
+}
+
+.icon {
+    height: 16px;
+    width: 11px;
+}
+
+.icon--bigger {
+    height: 16px;
+    width: 20px;
+}
