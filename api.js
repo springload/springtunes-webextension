@@ -2,12 +2,10 @@ var songUrl = "http://localhost:3000/api/playing";
 var volumeUrl = "http://localhost:3000/api/volume";
 
 function callApi(callback, url, method, paramBody) {
-  var body = paramBody;
-  if (body === undefined) { body = null; };
   var xmlhttp = new XMLHttpRequest();
 
-  xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
+  xmlhttp.onload = function() {
+      if (this.status == 200) {
           var data = JSON.parse(this.responseText);
           callback(data);
       }

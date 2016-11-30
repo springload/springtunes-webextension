@@ -1,10 +1,7 @@
-function displayVolume(show) {
-  var volumeDiv = document.getElementById('volume-changer');
-  volumeDiv.setAttribute('show', show);
-}
+var volumeDiv = document.getElementById('volume-changer');
+var volumeInput = document.getElementById('volume-changer-input');
 
 function updateVolume(data) {
-  var volumeInput = document.getElementById('volume-changer-input');
   volumeInput.setAttribute('value', Math.round(data.value * 100));
 }
 
@@ -83,16 +80,8 @@ document.getElementById('next').addEventListener('click', function () {
 });
 
 document.getElementById('volume').addEventListener('click', function () {
-  var show = this.getAttribute('show');
-  if (show == 'true') {
-    this.setAttribute('show', 'false');
-    show = 'false';
-  } else {
-    this.setAttribute('show', 'true');
-    show = 'true';
-  }
-
-  displayVolume(show);
+  var show = volumeDiv.getAttribute('hidden') !== true;
+  volumeDiv.setAttribute('hidden', show);
 });
 
 document.getElementById('volume-changer-input').addEventListener('change', function () {
