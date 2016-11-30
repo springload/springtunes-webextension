@@ -10,10 +10,6 @@
     "<all_urls>"
   ],
 
-  "background": {
-    "scripts": ["background.js"]
-  },
-
   "browser_action": {
     "browser_style": true,
     "default_icon": "icons/springtunes-32.png",

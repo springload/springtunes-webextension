@@ -1,8 +1,10 @@
-function callApi(callback, method, paramBody) {
+var songUrl = "http://localhost:3000/api/playing";
+var volumeUrl = "http://localhost:3000/api/volume";
+
+function callApi(callback, url, method, paramBody) {
   var body = paramBody;
   if (body === undefined) { body = null; };
   var xmlhttp = new XMLHttpRequest();
-  var url = "http://localhost:3000/api/playing";
 
   xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
@@ -17,20 +19,24 @@ function callApi(callback, method, paramBody) {
 
 function getCurrentSong(callbackStart, callbackEnd) {
   callbackStart();
-  callApi(callbackEnd, 'GET');
+  callApi(callbackEnd, songUrl, 'GET');
+}
+
+function changeVolume(callbackEnd, volumeValue) {
+  callApi(callbackEnd, volumeUrl, 'PUT', { volume: parseInt(volumeValue, 10) });
 }
 
 function playSong(callbackStart, callbackEnd) {
   callbackStart();
-  callApi(callbackEnd, 'PUT');
+  callApi(callbackEnd, songUrl, 'PUT');
 }
 
 function backSong(callbackStart, callbackEnd) {
   callbackStart();
-  callApi(callbackEnd, 'POST', { action: 'back' });
+  callApi(callbackEnd, songUrl, 'POST', { action: 'back' });
 }
 
 function nextSong(callbackStart, callbackEnd) {
   callbackStart();
-  callApi(callbackEnd, 'POST', { action: 'next' });
+  callApi(callbackEnd, songUrl, 'POST', { action: 'next' });
 }

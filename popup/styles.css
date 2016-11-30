@@ -10,7 +10,7 @@ body {
 }
 
 .panel-section {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #e5e5e5;
     padding: 15px;
 }
 
@@ -93,7 +93,9 @@ body {
 
 .green-button,
 .orange-button {
-    position:relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     height: 40px;
     width: 20%;
     color: white;
@@ -106,16 +108,6 @@ body {
 
 .green-button:hover {
     background-color: #005256;
-}
-
-.green-button img,
-.orange-button img {
-    position:absolute;
-    top:0;
-    bottom:0;
-    left: 0;
-    right: 0;
-    margin:auto;
 }
 
 .orange-button {
@@ -134,4 +126,35 @@ body {
 .icon--bigger {
     height: 16px;
     width: 20px;
+}
+
+
+/* VOLUME CONTROL */
+#volume-changer[show=true] {
+    display: block;
+}
+
+#volume-changer[show=false] {
+    display: none;
+}
+
+input[type=range][orient=vertical]
+{
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+    width: 4px;
+    height: 75px;
+    padding: 0;
+    border-radius: 6px;
+    background-color: #e5e5e5;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    bottom: 40px;
+    right: 25px;
+}
+
+/* Remove ugly dotted line for input range in Firefox */
+input[type=range]::-moz-focus-outer {
+    border: 0;
 }
