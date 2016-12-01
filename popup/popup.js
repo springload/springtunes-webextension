@@ -1,4 +1,4 @@
-var volumeDiv = document.getElementById('volume-changer');
+var volumeChangerDiv = document.getElementById('volume-changer');
 var volumeInput = document.getElementById('volume-changer-input');
 
 function updateVolume(data) {
@@ -22,9 +22,9 @@ function displayPlaySong(data) {
   imgNode.className = 'icon';
 
   if(data.playing)
-    imgNode.src = '../icons/fa-pause.svg';
+    imgNode.src = '../img/icons/fa-pause.svg';
   else
-    imgNode.src = '../icons/fa-play.svg';
+    imgNode.src = '../img/icons/fa-play.svg';
 
   playDiv.appendChild(imgNode);
 }
@@ -34,9 +34,24 @@ function displayProcessing() {
 
   var imgNode = document.createElement('img');
   imgNode.className = 'processing';
-  imgNode.src = '../icons/processing.gif';
+  imgNode.src = '../img/processing.gif';
 
   trackInfoDiv.appendChild(imgNode);
+}
+
+function displaySettingsError(result) {
+  displaySettings(result);
+  displayTestServerMsg(result);
+}
+
+function displaySettings(result) {
+  var settingsDiv = document.getElementById('settings');
+  settingsDiv.hidden = result === 'ok';
+}
+
+function displayTestServerMsg(result) {
+  var testServerMsg = document.getElementById('test-server-fails');
+  testServerMsg.hidden = result === 'ok';
 }
 
 function displayCurrentSong(data) {
@@ -80,12 +95,10 @@ document.getElementById('next').addEventListener('click', function () {
 });
 
 document.getElementById('volume').addEventListener('click', function () {
-  var show = volumeDiv.getAttribute('hidden') !== true;
-  volumeDiv.setAttribute('hidden', show);
+  var show = volumeChangerDiv.hidden !== true;
+  volumeChangerDiv.hidden = show;
 });
 
-document.getElementById('volume-changer-input').addEventListener('change', function () {
+volumeInput.addEventListener('change', function () {
   changeVolume(updateVolume, this.value);
 });
-
-getCurrentSong(displayProcessing, displayCurrentSong);

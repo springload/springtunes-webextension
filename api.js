@@ -1,40 +1,52 @@
-var songUrl = "http://localhost:3000/api/playing";
-var volumeUrl = "http://localhost:3000/api/volume";
-
-function callApi(callback, url, method, paramBody) {
+function callApi(url, method, paramBody, callback, callbackError) {
   var xmlhttp = new XMLHttpRequest();
 
   xmlhttp.onload = function() {
       if (this.status == 200) {
           var data = JSON.parse(this.responseText);
           callback(data);
+      } else {
+        if (callbackError) callbackError();
       }
   };
+  xmlhttp.onerror = callbackError;
   xmlhttp.open(method, url, true);
-  xmlhttp.setRequestHeader("Content-Type", "application/json");
-  xmlhttp.send(JSON.stringify(paramBody));
+  xmlhttp.setRequestHeader('Content-Type', 'application/json');
+  var data = '';
+  if (paramBody) { data = JSON.stringify(paramBody); }
+  xmlhttp.send();
+}
+
+function userTestServer(url, callback, callbackError) {
+  var cleanUrl = url.replace(/\/+$/, '');
+  var userPingUrl = cleanUrl+'/api/ping';
+  callApi(userPingUrl, 'GET', null, callback.bind(null, cleanUrl), callback.bind(null, cleanUrl));//callbackError)
+}
+
+function appTestServer(callback) {
+  callApi(pingUrl, 'GET', null, callback.bind(null, 'ok'), callback.bind(null, 'nok'))
 }
 
 function getCurrentSong(callbackStart, callbackEnd) {
   callbackStart();
-  callApi(callbackEnd, songUrl, 'GET');
+  callApi(songUrl, 'GET', null, callbackEnd);
 }
 
 function changeVolume(callbackEnd, volumeValue) {
-  callApi(callbackEnd, volumeUrl, 'PUT', { volume: parseInt(volumeValue, 10) });
+  callApi(volumeUrl, 'PUT', { volume: parseInt(volumeValue, 10) }, callbackEnd);
 }
 
 function playSong(callbackStart, callbackEnd) {
   callbackStart();
-  callApi(callbackEnd, songUrl, 'PUT');
+  callApi(songUrl, 'PUT', null, callbackEnd);
 }
 
 function backSong(callbackStart, callbackEnd) {
   callbackStart();
-  callApi(callbackEnd, songUrl, 'POST', { action: 'back' });
+  callApi(songUrl, 'POST', { action: 'back' }, callbackEnd);
 }
 
 function nextSong(callbackStart, callbackEnd) {
   callbackStart();
-  callApi(callbackEnd, songUrl, 'POST', { action: 'next' });
+  callApi(songUrl, 'POST', { action: 'next' }, callbackEnd);
 }

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+  </head>
+  <body>
+    <div class="panel-popup">
+      <div class="panel-section">
+        <div class="section-logo">
+          <img class="logo" src="../img/springtunes.svg" alt="Logo" />
+        </div>
+        <div class="section-settings u-inline u-va-top">
+          <a href="#" id="settings-toggle" title="Open settings">
+            <img class="icon--xl" src="../img/icons/fa-cog.svg" alt="Settings" />
+          </a>
+        </div>
+      </div>
+      <div id="settings" class="panel-section" hidden>
+        <div class="section-graphic">
+          <img class="icon--xxl u-va-bottom" src="../img/icons/fa-cog.svg" alt="Settings" />
+        </div>
+        <div class="section-info">
+          <p id="test-server-fails" hidden>
+             It looks like we can't reach Springtunes server. Please check the server URL.
+          </p>
+          <form>
+            <div class="field-container u-inline">
+              <label>Server URL: <input id="server-url" class="input" type="text" name="server" placeholder="http://localhost:3000" /></label>
+            </div>
+            <div class="u-inline" id="status">
+              <img id="status-img" class="icon--xl u-va-bottom" hidden />
+            </div>
+            <div>
+              <button type="submit" class="button--submit u-theme-green">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="panel-section">
+        <div class="section-graphic u-green-bg">
+          <img class="icon--xxl" src="../img/icons/fa-headphones.svg" alt="Headphones" />
+        </div>
+        <div class="section-info" id="track-info">
+          <img class="processing" src="../img/processing.gif" alt="Processing" />
+        </div>
+      </div><div class="panel-section-footer">
+        <a href="#" title="Refresh" id="refresh" class="section-footer-button button u-theme-orange">
+          <img class="icon--larger" src="../img/icons/fa-refresh.svg" />
+        </a><a href="#" title="Back" id="back" class="section-footer-button button u-theme-green">
+          <img class="icon" src="../img/icons/fa-step-backward.svg" />
+        </a><a href="#" title="Play/Pause" id="play" class="section-footer-button button u-theme-green">
+          <img class="icon" src="../img/icons/fa-play.svg" />
+        </a><a href="#" title="Next" id="next" class="section-footer-button button u-theme-green">
+          <img class="icon" src="../img/icons/fa-step-forward.svg" />
+        </a><a href="#" title="Volume" id="volume" class="section-footer-button button u-theme-green">
+          <img class="icon--larger" src="../img/icons/fa-volume-up.svg" />
+          <div id="volume-changer" hidden="false"><input id="volume-changer-input" type="range" orient="vertical" min="0" max="100" step="1" value="50" /></div>
+        </a>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+    <script src="settings.js"></script>
+    <script src="../api.js"></script>
+    <script src="init.js"></script>
+  </body>
+</html>

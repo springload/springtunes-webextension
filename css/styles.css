@@ -5,8 +5,20 @@ html, body {
 
 body {
     color: #333;
-    width: 300px;
     overflow: hidden;
+}
+
+ul {
+    margin: 0;
+    padding: 10px 15px;
+}
+
+.panel-popup {
+    width: 350px;
+}
+
+.panel-settings {
+    width: 600px;
 }
 
 .panel-section {
@@ -15,8 +27,26 @@ body {
 }
 
 .logo {
-    width: 250px;
-    height: 41px;
+    width: 100%;
+    height: 100%;
+}
+.section-logo {
+    width: 75%;
+}
+.section-settings {
+    width: 23%;
+    text-align: right;
+}
+
+.section-logo,
+.section-options {
+    display: inline-block;
+}
+
+.section-options {
+    vertical-align: top;
+    width: 23%;
+    text-align: right;
 }
 
 .processing {
@@ -28,7 +58,7 @@ body {
 .section-info {
     display: inline-block;
     vertical-align: top;
-    width: 196px;
+    width: 246px;
 }
 
 .song-title,
@@ -54,14 +84,7 @@ body {
     height: 60px;
     text-align: center;
     border-radius: 33px;
-    background: #7DC265;
     margin-right: 10px;
-}
-
-.headphones {
-    width: 50px;
-    height: 60px;
-    margin: auto;
 }
 
 /* CONTROLS */
@@ -91,31 +114,15 @@ body {
 }
 
 
-.green-button,
-.orange-button {
+.button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     height: 40px;
     width: 20%;
-    color: white;
     font-size: 14px;
     font-weight: 600;
-    background-color: #7DC265;
     font-weight: 800;
-    transition: background-color .2s ease;
-}
-
-.green-button:hover {
-    background-color: #005256;
-}
-
-.orange-button {
-    background-color: #F5AC35;
-}
-
-.orange-button:hover {
-    background-color: #bb7709;
 }
 
 .icon {
@@ -123,11 +130,21 @@ body {
     width: 11px;
 }
 
-.icon--bigger {
+.icon--larger {
     height: 16px;
     width: 20px;
 }
 
+.icon--xl {
+    height: 25px;
+    width: 25px;
+}
+
+.icon--xxl {
+    width: 50px;
+    height: 60px;
+    margin: auto;
+}
 
 /* VOLUME CONTROL */
 #volume-changer[show=true] {
@@ -151,10 +168,67 @@ input[type=range][orient=vertical]
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     position: absolute;
     bottom: 40px;
-    right: 25px;
+    right: 32px;
 }
 
 /* Remove ugly dotted line for input range in Firefox */
 input[type=range]::-moz-focus-outer {
     border: 0;
+}
+
+.u-inline {
+    display: inline-block;
+}
+
+.u-mr {
+    margin-right: 15px;
+}
+
+.input, .button--submit {
+    border-radius: 3px;
+    padding: auto 10px;
+    line-height: 1.25;
+    font-size: 16px;
+    border: 1px solid #e5e5e5;
+}
+
+.input { width: 100%; }
+
+.u-green-bg {
+    background-color: #7DC265;
+}
+
+.u-theme-orange {
+    background-color: #F5AC35;
+}
+
+.u-theme-orange:hover {
+    background-color: #bb7709;
+}
+
+.u-theme-green {
+    color: #fff;
+    background-color: #7DC265;
+    transition: background-color .2s ease;
+}
+
+.u-theme-green:hover {
+    background-color: #005256;
+}
+
+.u-va-bottom {
+    vertical-align: bottom;
+}
+
+.u-va-top {
+    vertical-align: top;
+}
+
+.input--error {
+    border-color: #f66;
+}
+
+.field-container {
+    width: 77%;
+    margin-bottom: 10px;
 }
