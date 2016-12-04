@@ -20,7 +20,7 @@ function callApi(url, method, paramBody, callback, callbackError) {
 function userTestServer(url, callback, callbackError) {
   var cleanUrl = url.replace(/\/+$/, '');
   var userPingUrl = cleanUrl+'/api/ping';
-  callApi(userPingUrl, 'GET', null, callback.bind(null, cleanUrl), callback.bind(null, cleanUrl));//callbackError)
+  callApi(userPingUrl, 'GET', null, callback.bind(null, cleanUrl), callbackError)
 }
 
 function appTestServer(callback) {
